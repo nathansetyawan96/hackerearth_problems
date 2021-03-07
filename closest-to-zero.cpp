@@ -7,15 +7,27 @@ using namespace std;
 
 int Solve(int N, vector<int> A) {
 	// find the smallest number
-	sort(A.begin(), A.end());
-	int closest_element = A[0];
+	if(A.size() == 0) {
+		return 0;
+	}
+	else if(A.size() == 1) {
+		return A[0];
+	}
+	else {
+		sort(A.begin(), A.end());
+		int closest = A[0];
 
-		return;
+		for(auto i: A) {
+			if (abs(i) <= abs(closest)) {
+				closest = A[i];
+			}
+		}
+
+		return closest;
+	}
 }
 
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
 	int N;
 	cin >> N;
 	vector<int> A(N);
